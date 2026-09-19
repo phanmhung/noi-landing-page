@@ -1,3 +1,5 @@
+import { StableText } from './StableText'
+import * as m from 'motion/react-m'
 import { useState } from 'react'
 import { usePreferences } from '../context/PreferencesContext'
 
@@ -51,14 +53,6 @@ export function ApiExample() {
   }
 
   return (
-    <section className="section api-section" id="docs">
-      <div className="container api-layout">
-        <div className="api-copy">
-          <p className="eyebrow">{copy.api.eyebrow}</p>
-          <h2 className="section-title">{copy.api.title}</h2>
-          <p className="section-copy">{copy.api.description}</p>
-          <div className="endpoint-pill"><span>POST</span>/v1/chat/completions</div>
-        </div>
         <div className="code-window">
           <div className="code-toolbar">
             <div className="window-dots" aria-hidden="true"><span /><span /><span /></div>
@@ -70,31 +64,39 @@ export function ApiExample() {
                   type="button"
                   role="tab"
                   aria-selected={activeExample === example}
-                  aria-controls={`panel-${example}`}
+                  aria-controls="code-example-panel"
+                  tabIndex={activeExample === example ? 0 : -1}
+                  onKeyDown={event => {
+                    if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+                      event.preventDefault()
+                      const next = event.key === 'Home' ? 'curl' : event.key === 'End' ? 'javascript' : activeExample === 'curl' ? 'javascript' : 'curl'
+                      selectExample(next)
+                      document.getElementById(`tab-${next}`)?.focus()
+                    }
+                  }}
                   onClick={() => selectExample(example)}
                 >
-                  {copy.api[example]}
+                  <StableText text={copy.api[example]} />
                 </button>
               ))}
             </div>
             <button className="copy-button" type="button" onClick={copyExample}>
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></svg>
-              {copy.api.copy}
+              <StableText text={copy.api.copy} />
             </button>
           </div>
           <div
             className="code-panel"
-            id={`panel-${activeExample}`}
+            id="code-example-panel"
             role="tabpanel"
             aria-labelledby={`tab-${activeExample}`}
           >
-            <pre><code>{examples[activeExample]}</code></pre>
+            <m.pre key={activeExample} initial={{ opacity: 0.4, y: 4 }} animate={{ opacity: 1, y: 0 }}><code>{examples[activeExample]}</code></m.pre>
           </div>
           <p className={`copy-status status-${copyStatus}`} aria-live="polite">
             {copyStatus === 'success' ? copy.api.copied : copyStatus === 'error' ? copy.api.copyFailed : '\u00a0'}
           </p>
         </div>
-      </div>
-    </section>
+
   )
 }

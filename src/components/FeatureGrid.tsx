@@ -1,3 +1,4 @@
+import { StableText } from './StableText'
 import { usePreferences } from '../context/PreferencesContext'
 import { featureIcons } from '../data/site'
 
@@ -20,16 +21,16 @@ export function FeatureGrid() {
     <section className="section features-section" id="features">
       <div className="container">
         <div className="section-heading split-heading">
-          <div><p className="eyebrow">{copy.features.eyebrow}</p><h2 className="section-title">{copy.features.title}</h2></div>
-          <p className="section-copy">{copy.features.description}</p>
+          <div><p className="eyebrow"><StableText text={copy.features.eyebrow} /></p><h2 className="section-title"><StableText text={copy.features.title} /></h2></div>
+          <p className="section-copy"><StableText text={copy.features.description} /></p>
         </div>
         <div className="feature-grid">
           {copy.features.items.map((feature, index) => (
             <article className="feature-card" key={feature.title}>
               <div className="feature-icon"><FeatureIcon name={featureIcons[index]} /></div>
               <span className="feature-index">0{index + 1}</span>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
+              <h3><StableText text={feature.title} /></h3>
+              <p><StableText text={feature.description} /></p>
             </article>
           ))}
         </div>

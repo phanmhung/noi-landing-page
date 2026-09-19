@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { StableText } from './StableText'
+import { useState, type CSSProperties } from 'react'
+import * as m from 'motion/react-m'
 import { usePreferences } from '../context/PreferencesContext'
 import type { ModelCategory, ModelSummary } from '../data/models'
 
@@ -16,10 +18,10 @@ export function ModelExplorer({ models }: { models: ModelSummary[] }) {
       <div className="container">
         <div className="models-heading">
           <div>
-            <p className="eyebrow">{copy.models.eyebrow}</p>
-            <h2 className="section-title">{copy.models.title}</h2>
+            <p className="eyebrow"><StableText text={copy.models.eyebrow} /></p>
+            <h2 className="section-title"><StableText text={copy.models.title} /></h2>
           </div>
-          <p className="section-copy">{copy.models.description}</p>
+          <p className="section-copy"><StableText text={copy.models.description} /></p>
         </div>
 
         <div className="model-filters" aria-label={copy.models.title}>
@@ -30,13 +32,14 @@ export function ModelExplorer({ models }: { models: ModelSummary[] }) {
               aria-pressed={activeCategory === category}
               onClick={() => setActiveCategory(category)}
             >
-              {copy.models[category]}
+              <StableText text={copy.models[category]} />
             </button>
           ))}
         </div>
 
+        <div className="model-results" style={{ '--rows-wide': Math.ceil(models.length / 4), '--rows-tablet': Math.ceil(models.length / 2), '--rows-mobile': models.length } as CSSProperties}>
         {filteredModels.length > 0 ? (
-          <div className="model-grid">
+          <m.div className="model-grid" key={activeCategory} initial={{ opacity: 0.5, y: 5 }} animate={{ opacity: 1, y: 0 }}>
             {filteredModels.map((model) => (
               <article className={`model-card accent-${model.accent}`} key={model.id}>
                 <div className="model-card-top">
@@ -44,25 +47,26 @@ export function ModelExplorer({ models }: { models: ModelSummary[] }) {
                   <div><h3>{model.name}</h3><p>{model.provider}</p></div>
                 </div>
                 <div className="model-prices">
-                  <p><span>{copy.models.input}</span><strong>{model.inputPrice}</strong></p>
-                  <p><span>{copy.models.output}</span><strong>{model.outputPrice}</strong></p>
+                  <p><span><StableText text={copy.models.input} /></span><strong>{model.inputPrice}</strong></p>
+                  <p><span><StableText text={copy.models.output} /></span><strong>{model.outputPrice}</strong></p>
                 </div>
                 <div className="model-card-bottom">
-                  <span className="sample-label">{copy.models.samplePrice}</span>
+                  <span className="sample-label"><StableText text={copy.models.samplePrice} /></span>
                   <div className="model-tags">
-                    {model.categories.slice(0, 2).map((category) => <span key={category}>{copy.models[category]}</span>)}
+                    {model.categories.slice(0, 2).map((category) => <span key={category}><StableText text={copy.models[category]} /></span>)}
                   </div>
                 </div>
               </article>
             ))}
-          </div>
+          </m.div>
         ) : (
           <div className="model-empty">
             <span aria-hidden="true">○</span>
-            <p>{copy.models.empty}</p>
-            <button type="button" onClick={() => setActiveCategory('all')}>{copy.models.reset}</button>
+            <p><StableText text={copy.models.empty} /></p>
+            <button type="button" onClick={() => setActiveCategory('all')}><StableText text={copy.models.reset} /></button>
           </div>
         )}
+        </div>
       </div>
     </section>
   )

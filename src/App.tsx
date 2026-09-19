@@ -1,5 +1,6 @@
 import { CallToAction } from './components/CallToAction'
-import { ApiExample } from './components/ApiExample'
+import { ApiSection } from './components/ApiSection'
+import { MotionProvider } from './components/MotionProvider'
 import { CapabilityStrip } from './components/CapabilityStrip'
 import { FeatureGrid } from './components/FeatureGrid'
 import { Footer } from './components/Footer'
@@ -9,10 +10,11 @@ import { ModelExplorer } from './components/ModelExplorer'
 import { Process } from './components/Process'
 import { models } from './data/models'
 import './styles/sections.css'
+import './styles/refinements.css'
 
 export function App() {
   return (
-    <>
+    <MotionProvider>
       <Header />
       <main>
         <Hero />
@@ -20,10 +22,10 @@ export function App() {
         <ModelExplorer models={models} />
         <FeatureGrid />
         <Process />
-        <ApiExample />
+        <ApiSection />
         <CallToAction />
       </main>
       <Footer />
-    </>
+    </MotionProvider>
   )
 }
