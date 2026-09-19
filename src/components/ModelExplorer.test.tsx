@@ -19,7 +19,7 @@ describe('ModelExplorer', () => {
       </TestProviders>,
     )
 
-    await userEvent.click(screen.getByRole('button', { name: 'Fast response' }))
+    await userEvent.click(screen.getByRole('button', { name: 'Fast' }))
     expect(screen.getAllByRole('article')).toHaveLength(2)
 
     rerender(
@@ -27,7 +27,7 @@ describe('ModelExplorer', () => {
         <ModelExplorer models={[]} />
       </TestProviders>,
     )
-    expect(screen.getByText('No models match this view yet.')).toBeInTheDocument()
+    expect(screen.getByText('No models match this filter.')).toBeInTheDocument()
 
     await userEvent.click(screen.getByRole('button', { name: 'Show all models' }))
     expect(screen.getByRole('button', { name: 'All models' })).toHaveAttribute('aria-pressed', 'true')

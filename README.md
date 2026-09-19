@@ -1,6 +1,6 @@
 # Nối
 
-**One connection. Every model. · Một kết nối. Mọi mô hình.**
+**One API for every model. · Một API cho mọi model.**
 
 Nối is an original bilingual landing page for a friendly, self-hosted AI gateway. It explains how a team can connect authorized model providers behind one consistent API, manage access, route requests, and understand usage without changing every client application.
 

@@ -49,7 +49,7 @@ export function RoutingVisual() {
         </g>
       </svg>
       <div className="orbital-footer">
-        <span aria-hidden="true">{locale === 'vi' ? 'Nhiều mô hình. Một kết nối.' : 'Many models. One connection.'}</span>
+        <span aria-hidden="true">{locale === 'vi' ? 'Mọi model. Một API.' : 'Every model. One API.'}</span>
         <button type="button" className="orbital-pause" onClick={() => setPaused(value => !value)} aria-label={locale === 'vi' ? paused ? 'Tiếp tục chuyển động' : 'Dừng chuyển động' : paused ? 'Resume animation' : 'Pause animation'} aria-pressed={paused}>
           <svg viewBox="0 0 16 16" aria-hidden="true">{paused ? <path d="M5 3L12 8L5 13Z" /> : <path d="M5 3V13M11 3V13" />}</svg>
         </button>

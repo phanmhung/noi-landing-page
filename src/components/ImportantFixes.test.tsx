@@ -27,6 +27,6 @@ describe('important interaction fixes', () => {
   it('sends the demonstration CTA to the working API example', () => {
     render(<TestProviders><CallToAction /></TestProviders>)
 
-    expect(screen.getByRole('link', { name: 'Explore the API' })).toHaveAttribute('href', '#docs')
+    expect(screen.getByRole('link', { name: 'View API example' })).toHaveAttribute('href', '#docs')
   })
 })

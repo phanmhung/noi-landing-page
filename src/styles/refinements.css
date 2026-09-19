@@ -47,6 +47,8 @@ html { scrollbar-gutter: stable; }
 .section-title { font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.14; letter-spacing: -0.04em; }
 .eyebrow { font-size: 0.7rem; letter-spacing: 0.1em; }
 .button { border-radius: 10px; }
+.button .stable-text { place-items: center; }
+.button .stable-text > span, .copy-button .stable-text > span { justify-self: center; text-align: center; }
 .button-primary { box-shadow: none; }
 .button-primary:hover { box-shadow: var(--shadow-sm); }
 .feature-card { box-shadow: none; }
