@@ -1,0 +1,49 @@
+:root {
+  color-scheme: light;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-ink: #13243a;
+  --color-ink-soft: #526174;
+  --color-canvas: #f8f6ef;
+  --color-surface: #fffdf8;
+  --color-surface-raised: rgba(255, 255, 255, 0.8);
+  --color-line: rgba(19, 36, 58, 0.12);
+  --color-blue: #176bff;
+  --color-blue-deep: #0e4ecc;
+  --color-teal: #17a89a;
+  --color-coral: #ff765f;
+  --color-violet: #6d5dfc;
+  --color-success: #0b7a60;
+  --gradient-brand: linear-gradient(120deg, var(--color-blue), var(--color-teal));
+  --gradient-wash: radial-gradient(circle at 18% 8%, rgba(23, 107, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 82% 20%, rgba(255, 118, 95, 0.12), transparent 28%),
+    radial-gradient(circle at 50% 82%, rgba(23, 168, 154, 0.1), transparent 34%);
+  --shadow-sm: 0 10px 30px rgba(28, 49, 76, 0.08);
+  --shadow-lg: 0 24px 70px rgba(28, 49, 76, 0.13);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --container: 1180px;
+  --header-height: 76px;
+  --ease-out: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-ink: #f5f7fb;
+  --color-ink-soft: #aab5c5;
+  --color-canvas: #09111d;
+  --color-surface: #101b2b;
+  --color-surface-raised: rgba(16, 27, 43, 0.82);
+  --color-line: rgba(226, 235, 246, 0.14);
+  --color-blue: #68a0ff;
+  --color-blue-deep: #4f86ed;
+  --color-teal: #58d6c9;
+  --color-coral: #ff927f;
+  --color-violet: #9a8cff;
+  --color-success: #66dcc0;
+  --gradient-wash: radial-gradient(circle at 18% 8%, rgba(53, 116, 229, 0.17), transparent 34%),
+    radial-gradient(circle at 82% 20%, rgba(255, 118, 95, 0.11), transparent 30%),
+    radial-gradient(circle at 50% 82%, rgba(23, 168, 154, 0.1), transparent 36%);
+  --shadow-sm: 0 12px 34px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 28px 80px rgba(0, 0, 0, 0.3);
+}
