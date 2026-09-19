@@ -80,7 +80,7 @@ export const messages: Record<Locale, SiteMessages> = {
     cta: {
       title: 'Give every model one clear way in.',
       description: 'Start small with one application, then grow the gateway at your team’s pace.',
-      action: 'Open the console',
+      action: 'Explore the API',
     },
     footer: {
       note: 'A friendly, self-hosted path to multi-model access.',
@@ -171,7 +171,7 @@ export const messages: Record<Locale, SiteMessages> = {
     cta: {
       title: 'Đưa mọi mô hình về một lối kết nối rõ ràng.',
       description: 'Bắt đầu với một ứng dụng, rồi mở rộng theo đúng nhịp của đội ngũ.',
-      action: 'Mở bảng điều khiển',
+      action: 'Xem ví dụ API',
     },
     footer: {
       note: 'Một cách thân thiện để tự vận hành truy cập đa mô hình.',

@@ -19,14 +19,14 @@
 .button-small {
   min-height: 42px;
   padding-inline: 18px;
-  color: #fff;
-  background: var(--color-ink);
+  color: var(--color-action-fg);
+  background: var(--color-action-bg);
   font-size: 0.88rem;
 }
 
 .button-primary {
-  color: #fff;
-  background: var(--gradient-brand);
+  color: var(--color-action-fg);
+  background: var(--gradient-action);
   box-shadow: 0 14px 30px rgba(23, 107, 255, 0.24);
 }
 

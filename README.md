@@ -61,7 +61,11 @@ GitHub Pages project sites are served from `/<repository>/`, so asset URLs must 
 VITE_BASE_PATH=/noi-preview/ npm run build
 ```
 
-Then run `npm run preview -- --host 127.0.0.1` and open the URL ending in `/noi-preview/`.
+Then start the preview with the same base path and open the URL ending in `/noi-preview/`:
+
+```bash
+VITE_BASE_PATH=/noi-preview/ npm run preview -- --host 127.0.0.1
+```
 
 ## Deploy to GitHub Pages
 

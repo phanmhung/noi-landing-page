@@ -11,7 +11,7 @@ export function CallToAction() {
           <BrandMark size={58} className="cta-mark" />
           <h2>{copy.cta.title}</h2>
           <p>{copy.cta.description}</p>
-          <a className="button button-light" href="mailto:hello@noi.example">{copy.cta.action}<span aria-hidden="true">→</span></a>
+          <a className="button button-light" href="#docs">{copy.cta.action}<span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>

@@ -17,14 +17,30 @@ const PreferencesContext = createContext<PreferencesValue | null>(null)
 
 function readLocale(): Locale {
   if (typeof window === 'undefined') return 'en'
-  return window.localStorage.getItem(LOCALE_KEY) === 'vi' ? 'vi' : 'en'
+  try {
+    return window.localStorage.getItem(LOCALE_KEY) === 'vi' ? 'vi' : 'en'
+  } catch {
+    return 'en'
+  }
 }
 
 function readTheme(): Theme {
   if (typeof window === 'undefined') return 'light'
-  const stored = window.localStorage.getItem(THEME_KEY)
-  if (stored === 'light' || stored === 'dark') return stored
+  try {
+    const stored = window.localStorage.getItem(THEME_KEY)
+    if (stored === 'light' || stored === 'dark') return stored
+  } catch {
+    // Preference persistence is optional; the system preference still works.
+  }
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+function persistPreference(key: string, value: string) {
+  try {
+    window.localStorage.setItem(key, value)
+  } catch {
+    // Some privacy modes deny storage. In-memory preferences remain usable.
+  }
 }
 
 export function PreferencesProvider({ children }: { children: ReactNode }) {
@@ -32,13 +48,13 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(readTheme)
 
   useEffect(() => {
-    window.localStorage.setItem(LOCALE_KEY, locale)
     document.documentElement.lang = locale
+    persistPreference(LOCALE_KEY, locale)
   }, [locale])
 
   useEffect(() => {
-    window.localStorage.setItem(THEME_KEY, theme)
     document.documentElement.dataset.theme = theme
+    persistPreference(THEME_KEY, theme)
   }, [theme])
 
   const value = useMemo<PreferencesValue>(

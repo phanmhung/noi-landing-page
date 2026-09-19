@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePreferences } from '../context/PreferencesContext'
 import { navItems } from '../data/site'
 import { BrandMark } from './BrandMark'
@@ -6,14 +6,23 @@ import { BrandMark } from './BrandMark'
 export function Header() {
   const { copy, locale, setLocale, theme, toggleTheme } = usePreferences()
   const [menuOpen, setMenuOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') setMenuOpen(false)
+      if (event.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (menuOpen) navRef.current?.querySelector<HTMLAnchorElement>('a')?.focus()
+  }, [menuOpen])
 
   return (
     <header className="site-header">
@@ -23,7 +32,7 @@ export function Header() {
           <span>Nối</span>
         </a>
 
-        <nav className={`site-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Primary navigation">
+        <nav ref={navRef} id="primary-navigation" className={`site-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Primary navigation">
           {navItems.map((item) => (
             <a key={item.id} href={`#${item.id}`} onClick={() => setMenuOpen(false)}>
               {copy.nav[item.labelKey]}
@@ -49,9 +58,11 @@ export function Header() {
           </button>
           <a className="button button-small header-cta" href="#get-started">{copy.nav.console}</a>
           <button
+            ref={menuButtonRef}
             className="icon-button menu-button"
             type="button"
             aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
             aria-label={menuOpen ? copy.controls.closeMenu : copy.controls.menu}
             onClick={() => setMenuOpen((open) => !open)}
           >
