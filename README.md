@@ -94,9 +94,3 @@ src/
   i18n/         English and Vietnamese copy
   styles/       Design tokens and responsive section styles
 ```
-
-## Attribution
-
-Product terminology was informed by the open-source [New API project](https://github.com/QuantumNous/new-api). Model names shown in the static catalog were observed on [Tokens1688](https://tokens1688.cn/) and are used only as illustrative sample content.
-
-Nối is an original demonstration brand and landing-page design. It is not affiliated with New API, Tokens1688, or their operators, and it does not reuse their logos or proprietary assets.

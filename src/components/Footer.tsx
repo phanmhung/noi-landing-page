@@ -18,10 +18,6 @@ export function Footer() {
         </nav>
       </div>
       <div className="container footer-bottom">
-        <div>
-          <a href="https://github.com/QuantumNous/new-api" target="_blank" rel="noreferrer"><StableText text={copy.footer.attribution} /></a>
-          <p><StableText text={copy.footer.original} /></p>
-        </div>
         <p>© 2026 Nối</p>
       </div>
     </footer>

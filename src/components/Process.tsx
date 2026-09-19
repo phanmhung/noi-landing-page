@@ -1,4 +1,6 @@
 import { StableText } from './StableText'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { usePreferences } from '../context/PreferencesContext'
 
 export function Process() {
@@ -11,7 +13,7 @@ export function Process() {
           <p className="eyebrow"><StableText text={copy.process.eyebrow} /></p>
           <h2 className="section-title"><StableText text={copy.process.title} /></h2>
           <p className="section-copy"><StableText text={copy.process.description} /></p>
-          <p className="process-note"><span aria-hidden="true">✓</span><StableText text={copy.process.note} /></p>
+          <p className="process-note"><FontAwesomeIcon icon={faCheck} aria-hidden="true" /><StableText text={copy.process.note} /></p>
         </div>
         <ol className="process-list">
           {copy.process.steps.map((step, index) => (

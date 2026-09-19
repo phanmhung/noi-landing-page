@@ -38,7 +38,7 @@ export const messages: Record<Locale, SiteMessages> = {
       vietnamese: 'Vietnamese-friendly',
       empty: 'No models match this view yet.',
       reset: 'Show all models',
-      samplePrice: 'Illustrative price',
+      samplePrice: 'VND / 1M tokens',
       input: 'Input',
       output: 'Output',
     },
@@ -84,8 +84,6 @@ export const messages: Record<Locale, SiteMessages> = {
     },
     footer: {
       note: 'A friendly, self-hosted path to multi-model access.',
-      attribution: 'Product terminology informed by the open-source New API project.',
-      original: 'Nối is an original demonstration brand and is not affiliated with New API or Tokens1688.',
     },
     controls: {
       language: 'Switch language',
@@ -130,7 +128,7 @@ export const messages: Record<Locale, SiteMessages> = {
       vietnamese: 'Hỗ trợ tiếng Việt',
       empty: 'Chưa có mô hình phù hợp với bộ lọc này.',
       reset: 'Xem tất cả mô hình',
-      samplePrice: 'Giá minh họa',
+      samplePrice: 'VND / 1 triệu token',
       input: 'Đầu vào',
       output: 'Đầu ra',
     },
@@ -175,8 +173,6 @@ export const messages: Record<Locale, SiteMessages> = {
     },
     footer: {
       note: 'Một cách thân thiện để tự vận hành truy cập đa mô hình.',
-      attribution: 'Thuật ngữ sản phẩm được tham khảo từ dự án mã nguồn mở New API.',
-      original: 'Nối là thương hiệu minh họa độc lập, không liên kết với New API hoặc Tokens1688.',
     },
     controls: {
       language: 'Đổi ngôn ngữ',

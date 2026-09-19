@@ -1,4 +1,6 @@
 import { StableText } from './StableText'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from 'react'
 import { usePreferences } from '../context/PreferencesContext'
 import { navItems } from '../data/site'
@@ -51,11 +53,7 @@ export function Header() {
             {locale === 'en' ? 'VI' : 'EN'}
           </button>
           <button className="icon-button" type="button" onClick={toggleTheme} aria-label={copy.controls.theme}>
-            {theme === 'light' ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.2A8.8 8.8 0 0 1 8.8 3.5 8.8 8.8 0 1 0 20.5 15.2Z" /></svg>
-            ) : (
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" /></svg>
-            )}
+            <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} aria-hidden="true" />
           </button>
           <a className="button button-small header-cta" href="#get-started"><StableText text={copy.nav.console} /></a>
           <button

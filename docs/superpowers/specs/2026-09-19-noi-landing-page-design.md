@@ -156,7 +156,6 @@ Purely presentational components do not require individual unit tests. Verificat
 - Payments, subscriptions, or billing workflows
 - Backend deployment of New API
 - A pixel-for-pixel recreation of either reference site
-- Claims of official affiliation with New API, Tokens1688, or their operators
 
 ## Success Criteria
 

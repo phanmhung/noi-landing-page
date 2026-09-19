@@ -3,6 +3,7 @@ import { useState, type CSSProperties } from 'react'
 import * as m from 'motion/react-m'
 import { usePreferences } from '../context/PreferencesContext'
 import type { ModelCategory, ModelSummary } from '../data/models'
+import { ProviderLogo } from './ProviderLogo'
 
 const categories: ModelCategory[] = ['all', 'coding', 'reasoning', 'fast', 'vietnamese']
 
@@ -43,7 +44,7 @@ export function ModelExplorer({ models }: { models: ModelSummary[] }) {
             {filteredModels.map((model) => (
               <article className={`model-card accent-${model.accent}`} key={model.id}>
                 <div className="model-card-top">
-                  <span className="model-letter" aria-hidden="true">{model.provider.slice(0, 1)}</span>
+                  <ProviderLogo provider={model.provider} />
                   <div><h3>{model.name}</h3><p>{model.provider}</p></div>
                 </div>
                 <div className="model-prices">

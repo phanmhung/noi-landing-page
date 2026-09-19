@@ -59,6 +59,6 @@ export interface SiteMessages {
     copyFailed: string
   }
   cta: { title: string; description: string; action: string }
-  footer: { note: string; attribution: string; original: string }
+  footer: { note: string }
   controls: { language: string; theme: string; menu: string; closeMenu: string }
 }

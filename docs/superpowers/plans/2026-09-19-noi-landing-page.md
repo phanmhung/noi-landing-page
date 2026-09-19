@@ -272,7 +272,6 @@ Map the typed bilingual arrays from `messages` into reusable cards. Each feature
 
 - [ ] **Step 5: Build final CTA, footer, and page composition**
 
-The footer attribution links to `https://github.com/QuantumNous/new-api` and states that it is a terminology/reference source. It must also state that Nối's brand and landing-page design are original and avoid implying official affiliation.
 
 Compose all current sections in `App.tsx`, leaving the Task 3 model explorer and API panel import locations in their final order only after those components exist. Until then, the app can render the narrative sections without empty placeholders.
 

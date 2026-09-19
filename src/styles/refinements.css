@@ -4,6 +4,18 @@
 .stable-text .text-reserve { visibility: hidden; pointer-events: none; user-select: none; }
 html { scrollbar-gutter: stable; }
 
+.brand-mark {
+  display: inline-grid;
+  flex: none;
+  border-radius: 30%;
+  color: #fff;
+  background: linear-gradient(145deg, var(--color-blue), var(--color-teal));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  place-items: center;
+}
+.brand-mark .svg-inline--fa { width: 50%; height: 50%; }
+.icon-button .svg-inline--fa { width: 17px; fill: currentColor; stroke: none; }
+
 :root {
   --radius-md: 14px;
   --radius-lg: 22px;
@@ -12,6 +24,17 @@ html { scrollbar-gutter: stable; }
 }
 .hero { min-height: 0; padding-top: calc(var(--header-height) + 72px); padding-bottom: 68px; }
 .hero-grid { gap: 56px; }
+.hero-copy { position: relative; isolation: isolate; }
+.hero-copy > :not(.hero-signal-field) { position: relative; z-index: 1; }
+.hero-signal-field { position: absolute; z-index: 0; top: 30px; right: -24px; left: -70px; height: 310px; overflow: hidden; opacity: .38; pointer-events: none; mask-image: linear-gradient(90deg, transparent, #000 18%, #000 72%, transparent); }
+.hero-signal-field::before, .hero-signal-field::after { position: absolute; border: 1px solid color-mix(in srgb, var(--color-blue) 34%, transparent); border-radius: 50%; content: ''; }
+.hero-signal-field::before { width: 430px; height: 160px; top: 60px; left: 10px; transform: rotate(-8deg); }
+.hero-signal-field::after { width: 360px; height: 230px; top: 18px; left: 108px; border-color: color-mix(in srgb, var(--color-teal) 28%, transparent); transform: rotate(13deg); }
+.hero-signal-field span { position: absolute; z-index: 1; width: 7px; height: 7px; border-radius: 50%; background: var(--color-blue); box-shadow: 0 0 18px 5px color-mix(in srgb, var(--color-blue) 42%, transparent); animation: hero-signal 9s linear infinite; }
+.hero-signal-field span:nth-child(1) { top: 85px; left: 18%; }
+.hero-signal-field span:nth-child(2) { top: 195px; left: 48%; animation-delay: -3s; animation-duration: 12s; background: var(--color-teal); }
+.hero-signal-field span:nth-child(3) { top: 135px; left: 76%; animation-delay: -6s; animation-duration: 10s; }
+@keyframes hero-signal { 0% { transform: translate3d(-80px, 26px, 0); opacity: 0; } 18%, 78% { opacity: .85; } 100% { transform: translate3d(130px, -24px, 0); opacity: 0; } }
 .hero-copy h1 { font-size: clamp(3rem, 5.8vw, 5.3rem); line-height: 1.07; letter-spacing: -0.055em; }
 .hero-copy h1::first-line { color: inherit; }
 .hero-description { font-size: 1.05rem; }
@@ -28,23 +51,44 @@ html { scrollbar-gutter: stable; }
 .button-primary:hover { box-shadow: var(--shadow-sm); }
 .feature-card { box-shadow: none; }
 .feature-card:hover { transform: translateY(-2px); }
-.feature-card h3 { margin-top: 28px; }
+.feature-grid { align-items: stretch; }
+.feature-card { display: grid; grid-template-rows: auto 1fr auto; align-content: start; }
+.feature-icon .svg-inline--fa { width: 21px; height: 21px; fill: currentColor; stroke: none; }
+.feature-card h3 { align-self: end; margin-top: 28px; }
+.feature-card p { min-height: 4.5em; }
 .header-cta { white-space: nowrap; }
 .site-nav { gap: 20px; }
 .site-nav a { font-size: 0.85rem; }
-.cta-card { padding-block: 64px; background: #143957; box-shadow: none; }
+.cta-card { display: flex; flex-direction: column; align-items: center; justify-content: center; padding-block: 64px; background: #143957; box-shadow: none; }
 .cta-card::before, .cta-card::after { display: none; }
 .cta-card h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.15; }
+.cta-card .button-light { align-self: center; }
+.cta-card .button-light .svg-inline--fa { width: 13px; }
 .provider-proof { margin-top: 36px; }
+.split-heading, .models-heading { align-items: start; }
+.split-heading > .section-copy, .models-heading > .section-copy { margin-top: 0; }
+.capability-item { align-items: flex-start; }
+.capability-number, .step-number { line-height: 1.45; }
+.process-note { align-items: flex-start; }
+.process-note .svg-inline--fa { flex: none; width: 13px; margin-top: 3px; color: var(--color-teal); }
+.footer-grid { align-items: start; }
+.footer-bottom { justify-content: center; text-align: center; }
 
 /* Reserve the complete catalog, so later sections never jump on filtering. */
 .model-results { --rows: var(--rows-wide); min-height: calc(max(1, var(--rows)) * 300px + max(0, var(--rows) - 1) * 14px); margin-top: 24px; }
 .model-grid { margin-top: 0; grid-auto-rows: 300px; }
-.model-card { height: 300px; min-height: 0; padding: 20px; }
+.model-card { display: flex; flex-direction: column; height: 300px; min-height: 0; padding: 20px; }
 .model-card-top > div { min-width: 0; }
+.provider-logo { display: grid; flex: none; width: 42px; height: 42px; border: 1px solid var(--color-line); border-radius: 12px; background: color-mix(in srgb, currentColor 7%, var(--color-surface)); place-items: center; }
+.provider-logo svg { width: 22px; height: 22px; }
+.provider-logo-fallback { color: #fff; background: var(--card-accent); font-weight: 900; }
 .model-card h3 { white-space: normal; overflow-wrap: anywhere; }
 .model-prices .stable-text { display: grid; }
 .model-prices .stable-text > span { margin: 0; }
+.model-card-bottom { display: grid; grid-template-columns: 1fr; gap: 8px; align-items: end; min-height: 48px; margin-top: auto; }
+.sample-label { min-height: 1.3em; white-space: nowrap; }
+.model-tags { min-height: 20px; justify-content: start; }
+.model-prices strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .model-empty { margin-top: 0; }
 .model-filters button { position: relative; }
 
@@ -65,6 +109,7 @@ html { scrollbar-gutter: stable; }
   .model-results { --rows: var(--rows-mobile); }
   .hero-copy h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
   .hero { padding-top: calc(var(--header-height) + 44px); }
+  .hero-signal-field { top: 20px; left: -30px; height: 230px; opacity: .28; }
   .routing-visual { height: 360px; }
   .code-toolbar { grid-template-columns: 1fr auto; }
   .code-tabs button { padding-inline: 6px; }
@@ -73,4 +118,5 @@ html { scrollbar-gutter: stable; }
 
 @media (prefers-reduced-motion: reduce) {
   .feature-card:hover { transform: none; }
+  .hero-signal-field span { animation: none; }
 }

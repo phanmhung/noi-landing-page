@@ -32,4 +32,10 @@ describe('ModelExplorer', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Show all models' }))
     expect(screen.getByRole('button', { name: 'All models' })).toHaveAttribute('aria-pressed', 'true')
   })
+
+  it('identifies models with their real provider logos', () => {
+    render(<TestProviders><ModelExplorer models={models} /></TestProviders>)
+    expect(screen.getAllByRole('img', { name: 'DeepSeek logo' })).toHaveLength(2)
+    expect(screen.getAllByRole('img', { name: 'Qwen logo' })).toHaveLength(2)
+  })
 })
