@@ -1,0 +1,33 @@
+.orbital-visual {
+  position: relative;
+  height: 480px;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #25364e;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at 50% 45%, #112942 0%, #091626 48%, #060d18 100%);
+  box-shadow: 0 20px 60px -30px #07162970;
+}
+.orbital-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.orbital-heading, .orbital-footer { position: absolute; z-index: 1; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: center; }
+.orbital-heading { top: 23px; color: #95abc5; font-size: 9px; font-weight: 600; letter-spacing: 2px; }
+.orbital-status { color: #6adacb; font-size: 8px; }
+.orbital-footer { bottom: 18px; color: #a5bdd8; font-size: 11px; letter-spacing: .2px; }
+.orbital-pause { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #34455b; border-radius: 50%; background: #101f31; color: #c4d8ed; cursor: pointer; }
+.orbital-pause:hover { background: #1b324c; }
+.orbital-pause svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+.orbital-traveler { animation: orbital-revolution linear infinite; transform-origin: 0 0; }
+.orbital-visual[data-paused='true'] .orbital-traveler { animation-play-state: paused; }
+@keyframes orbital-revolution { to { transform: rotate(360deg); } }
+@media (max-width: 640px) {
+  .orbital-visual { height: 360px; }
+  .orbital-heading, .orbital-footer { left: 18px; right: 18px; }
+  .orbital-heading { font-size: 8px; letter-spacing: 1.5px; }
+  .orbital-footer { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbital-traveler { animation: none; }
+  .orbital-pause { display: none; }
+}
